@@ -5,8 +5,7 @@ package net.buammar;
 public class تشغيل {
     public static void main(String[] args) {
         الدلة قهوة = new الدلة( "قهوة" , 500, 50);
-        قهوة.تقديم(1);
+        قهوة.تقديم(500000);
         قهوة.كمية_السائل_في_الدلة();
-        قهوة.تعبئة(50);
     }
 }
