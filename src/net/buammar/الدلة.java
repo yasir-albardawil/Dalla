@@ -43,11 +43,11 @@ public class الدلة {
 
 
     public void تقديم(int عدد_مرات_التقديم) {
-        double عد =  getFanajeen();
+        double عد =  عدد_الكؤوس();
         if (عدد_مرات_التقديم > 0) {
             for (int i =0; i < عد; i++) {
                 if (!هل_فارغ()) {
-                    if (getFanajeen() >= 1) {
+                    if (عدد_الكؤوس() >= 1) {
                         System.out.println("تقديم القليل من ال" + نوع_السائل + " " + حجم_السائل + " لتر [-"+حجم_الكأس+" لتر]");
                         حجم_السائل -= حجم_الكأس;
                     }
@@ -58,36 +58,32 @@ public class الدلة {
         } else {
             System.out.println("يجب أن يكون حجم السائل لل" + نوع_السائل + "أكبر من 0");
         }
-
         getlastLiquidAmount();
-
     }
 
 
-    public void serve(int عدد_مرات_التقديم, double كمية_السائل) {
-        int count = (int)getFanajeen();
-        if (عدد_مرات_التقديم > 0) {
-            for (int i =0; i < count; i++) {
+    public void تقديم(int عدد_مرات_التقديم, double كمية_السائل) {
+        if (عدد_الكؤوس() >= عدد_مرات_التقديم) {
+            for (int i = 0; i < عدد_مرات_التقديم; i++) {
                 if (!هل_فارغ()) {
-                    if (getFanajeen() >= 1) {
-                        System.out.println("تقديم القليل من ال" + نوع_السائل + " " + عدد_مرات_التقديم + " [-"+حجم_الكأس+" لتر]");
-                        عدد_مرات_التقديم -= حجم_الكأس;
+                    if (حجم_السائل >= كمية_السائل) {
+                        System.out.println("تقديم القليل من ال" + نوع_السائل + " " + حجم_السائل + " لتر [-"+كمية_السائل+" لتر]");
+                        حجم_السائل -= كمية_السائل;
                     }
                 } else {
-                    System.out.println("الدلة فارغة");
+                    System.out.println("دلة ال" + نوع_السائل + " فارغة");
                 }
             }
         } else {
-            System.out.println("يجب أن يكون حجم السائل لل" + نوع_السائل + "أكبر من 0");
+            getlastLiquidAmount();
         }
 
-        getlastLiquidAmount();
     }
 
 
     public void تقديم_كامل_الدلة() {
-        while (getFanajeen() >= 1) {
-            System.out.println("تقديم القليل من ال" + نوع_السائل + " " + حجم_السائل + " [-"+حجم_الكأس+"]");
+        while (عدد_الكؤوس() >= 1) {
+            System.out.println("تقديم القليل من ال" + نوع_السائل + " " + حجم_السائل + " لتر [-"+حجم_الكأس+" لتر]");
             حجم_السائل -= حجم_الكأس;
 
         }
@@ -95,7 +91,7 @@ public class الدلة {
         getlastLiquidAmount();
     }
 
-    private double getFanajeen() {
+    private double عدد_الكؤوس() {
         return حجم_السائل/حجم_الكأس;
     }
 
